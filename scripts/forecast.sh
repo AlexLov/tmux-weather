@@ -7,6 +7,7 @@ source "$CURRENT_DIR/helpers.sh"
 get_forecast() {
   local format=$(get_tmux_option @forecast-format "%C+%t+%w")
   local location=$(get_tmux_option @forecast-location "") # Let wttr.in figure out the location
+  location=$(urlencode "$location")
   curl "http://wttr.in/$location?format=$format"
 }
 
